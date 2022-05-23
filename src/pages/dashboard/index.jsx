@@ -11,7 +11,6 @@ function Dashboard() {
     useEffect (() => {
         async function loadUsers(){
             const response = await api.get('/users')
-            //console.log(response.data)
             setUsers(response.data)
             setLoading(false);
         }
@@ -29,13 +28,13 @@ function Dashboard() {
     return (
         <div className='flex tracking-wider'>
             <Header />
-            <div className='w-screen bg-snow grid grid-cols-4 gap-20 px-8 py-8'>
+            <div className='w-screen bg-snow grid grid-cols-5 gap-90 p-8 py-20  mx-auto sm:p-10 md:p-16'>
                 {users.map((user) =>{
                     return(
-                        <article key={user.id}>
-                            <p className='pb-5 text-xl list-inside subpixel-antialiased relative text-pink'>{user.username}</p>
-                            <p className='pb-4 list-inside'>{user.email}</p>
-                            <Link to={`/users/${user.id}`} className= 'bg-pink hover:bg-blue text-white font-lighter py-1.5 px-6 rounded-full'>Acessar TodoList</Link>
+                        <article className='rounded-xl h-52 w-64' key={user.id}>
+                            <p className='pt-2 pb-7 list-inside subpixel-antialiased relative text-pink text-2xl font-semibold'>{user.username}</p>
+                            <p className='pb-4 list-inside text-sm text-blue'>{user.email}</p>
+                            <Link to={`/users/${user.id}`} className= 'bg-pink hover:bg-blue text-white font-lighter py-2 px-6 rounded overflow-hidden shadow-lg'>Acessar TodoList</Link>
                         </article>
                     )
                 })}
